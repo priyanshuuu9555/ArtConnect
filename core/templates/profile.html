@@ -1,0 +1,133 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Profile - ArtConnect</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: #eef4ff;
+            font-family: 'Segoe UI', sans-serif;
+            display: flex;
+            justify-content: center;
+        }
+
+        .phone-frame {
+            width: 100%;
+            max-width: 430px;
+            height: 100vh;
+            overflow-y: auto;
+            background-color: white;
+        }
+
+        .top-header {
+            background: linear-gradient(135deg, #4e54c8, #8f94fb);
+            padding: 15px;
+            color: white;
+            text-align: center;
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+        }
+
+        .top-header h1 {
+            margin: 0;
+            font-size: 22px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .top-header h1 img {
+            width: 28px;
+            margin-right: 10px;
+        }
+
+        .top-header nav {
+            margin-top: 10px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .top-header nav a {
+            font-size: 13px;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 6px 12px;
+            border-radius: 8px;
+            color: white;
+            text-decoration: none;
+        }
+
+        .top-header nav a:hover {
+            background: rgba(255, 255, 255, 0.4);
+        }
+
+        .section {
+            padding: 20px;
+        }
+
+        .profile-card {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+            text-align: center;
+        }
+
+        .profile-card img {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 15px;
+        }
+
+        .profile-card h3 {
+            margin: 0;
+            font-size: 22px;
+        }
+
+        .profile-card p {
+            margin: 5px 0;
+            color: #777;
+            font-size: 15px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="phone-frame">
+
+    <!-- ✅ Navbar -->
+    <div class="top-header">
+        <h1><img src="{% static 'img/paint.png' %}"> ArtConnect</h1>
+        <nav>
+            <a href="{% url 'explore' %}">Explore</a>
+            <a href="{% url 'events' %}">Events</a>
+            <a href="{% url 'post_create' %}">Post</a>
+            <a href="{% url 'about' %}">About</a>
+            <a href="{% url 'profile' %}">Profile</a>
+            <a href="{% url 'logout' %}">Logout</a>
+        </nav>
+    </div>
+
+    <!-- ✅ Profile Section -->
+    <div class="section">
+        <div class="profile-card">
+            <img src="{% static 'uploads/default.png' %}" alt="Profile Picture">
+            <h3>Priyanshu</h3>
+            <p>Sketch Artist</p>
+            <p>Email: priyanshu@example.com</p>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

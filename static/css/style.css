@@ -1,0 +1,89 @@
+/* Mobile-first responsive container */
+.mobile-container {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    font-family: 'Segoe UI', sans-serif;
+    text-align: center;
+}
+
+/* Logo and titles */
+h1 img.logo {
+    width: 40px;
+    vertical-align: middle;
+    margin-right: 10px;
+}
+h1, h2 {
+    color: #333;
+}
+
+/* Form styling */
+form input,
+form select,
+form textarea {
+    width: 100%;
+    margin: 10px 0;
+    padding: 12px 14px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    outline: none;
+    box-sizing: border-box;
+}
+
+/* Buttons */
+button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 12px;
+    width: 100%;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Links */
+a {
+    color: #007bff;
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+}
+
+/* Message styling (for Django messages framework) */
+ul.messages {
+    list-style: none;
+    padding: 0;
+}
+ul.messages li {
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 6px;
+    font-weight: bold;
+}
+ul.messages li.success {
+    background-color: #d4edda;
+    color: #155724;
+}
+ul.messages li.error {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+    .mobile-container {
+        margin: 20px;
+    }
+}

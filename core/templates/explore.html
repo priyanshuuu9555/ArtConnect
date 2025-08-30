@@ -1,0 +1,167 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Explore - ArtConnect</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+    <style>
+        body {
+            margin: 0;
+            background: #eef4ff;
+            font-family: 'Segoe UI', sans-serif;
+            display: flex;
+            justify-content: center;
+        }
+
+        .phone-frame {
+            width: 100%;
+            max-width: 430px;
+            min-height: 100vh;
+            background-color: white;
+        }
+
+        .top-header {
+            background: linear-gradient(135deg, #4e54c8, #8f94fb);
+            padding: 15px;
+            color: white;
+            text-align: center;
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+        }
+
+        .top-header h1 {
+            margin: 0;
+            font-size: 22px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .top-header h1 img {
+            width: 28px;
+            margin-right: 10px;
+        }
+
+        .top-header nav {
+            margin-top: 10px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .top-header nav a {
+            font-size: 13px;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 6px 12px;
+            border-radius: 8px;
+            color: white;
+            text-decoration: none;
+        }
+
+        .top-header nav a:hover {
+            background: rgba(255, 255, 255, 0.4);
+        }
+
+        .section {
+            padding: 20px;
+        }
+
+        .post-card {
+            background: white;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+        }
+
+        .post-card img.profile-pic {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 10px;
+        }
+
+        .post-card .user-info {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .post-card .user-details h4 {
+            margin: 0;
+            font-size: 16px;
+        }
+
+        .post-card .user-details p {
+            margin: 0;
+            font-size: 13px;
+            color: gray;
+        }
+
+        .post-card img.post-img {
+            width: 100%;
+            border-radius: 10px;
+            margin-top: 10px;
+            max-height: 300px;
+            object-fit: cover;
+        }
+
+        .post-card .caption {
+            margin-top: 8px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="phone-frame">
+    <!-- ✅ Top Navbar -->
+    <div class="top-header">
+        <h1><img src="{% static 'img/paint.png' %}"> ArtConnect</h1>
+        <nav>
+            <a href="{% url 'explore' %}">Explore</a>
+            <a href="{% url 'events' %}">Events</a>
+            <a href="{% url 'post_create' %}">Post</a>
+            <a href="{% url 'about' %}">About</a>
+            <a href="{% url 'profile' %}">Profile</a>
+            <a href="{% url 'logout' %}">Logout</a>
+        </nav>
+    </div>
+
+    <!-- ✅ All Posts -->
+    <div class="section">
+        {% for post in posts %}
+            <div class="post-card">
+                <div class="user-info">
+                    <img src="{% static 'uploads/default.png' %}" class="profile-pic" alt="User">
+                    <div class="user-details">
+                        <h4>{{ post.user.username }}</h4>
+                        <p>
+                            {% if post.user.profile.category %}
+                                {{ post.user.profile.category }}
+                            {% else %}
+                                Artist
+                            {% endif %}
+                        </p>
+                    </div>
+                </div>
+                {% if post.image %}
+                    <img src="{{ post.image.url }}" class="post-img" alt="Post Image">
+                {% endif %}
+                {% if post.caption %}
+                    <p class="caption">{{ post.caption }}</p>
+                {% endif %}
+            </div>
+        {% empty %}
+            <p>No posts to show yet.</p>
+        {% endfor %}
+    </div>
+</div>
+
+</body>
+</html>
